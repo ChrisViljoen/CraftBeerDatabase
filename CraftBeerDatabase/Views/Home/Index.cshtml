@@ -1,0 +1,58 @@
+﻿@model IEnumerable<CraftBeerDatabase.Models.Beer>
+
+<h2 class="text-center">The Beers</h2>
+
+<p>
+    <a title="Add a beer" class="btn btn-lg" href="@Url.Action("Create")"><span class="glyphicon glyphicon-plus"></span></a>
+</p>
+<table class="table">
+    <tr>
+        <th class="colBrewery">
+            @Html.DisplayNameFor(model => model.Brewery)
+        </th>
+        <th class="colStyle">
+            @Html.DisplayNameFor(model => model.Style)
+        </th>
+        <th class="colName">
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th class="colDescription">
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th class="colABV">
+            @Html.DisplayNameFor(model => model.ABV)
+        </th>
+        <th class="colIBU">
+            @Html.DisplayNameFor(model => model.IBU)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Brewery)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Style)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ABV)%
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IBU)
+        </td>
+        <td>
+            <a title="Edit this beer" class="btn btn-warning btn-sm btn-custom" href="@Url.Action("Edit", new { id = item.Id })"><span class="glyphicon glyphicon-edit"></span></a>
+            <a title="Delete this beer" class="btn btn-danger btn-sm" href="@Url.Action("Delete", new { id = item.Id })"><span class="glyphicon glyphicon-trash"></span></a>  
+        </td>
+    </tr>
+}
+
+</table>
